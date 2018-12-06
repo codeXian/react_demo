@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
+import { toggleCollapsed } from './redux/actions';
 import './App.css';
 
 const { Header, Sider, Content } = Layout;
 
 class App extends Component {
-  state = {
-    collapsed: false,
-  };
-
   toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
+    this.props.toggleCollapsed(!this.props.global.collapsed);
   };
 
   render() {
+    const { collapsed } = this.props.global;
     return (
       <Layout>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
@@ -39,7 +36,7 @@ class App extends Component {
           <Header style={{ background: '#fff', padding: 0 }}>
             <Icon
               className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
           </Header>
@@ -59,4 +56,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  const { global } = state;
+  return { global };
+};
+
+const mapDispatchToProps = {
+  toggleCollapsed,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
