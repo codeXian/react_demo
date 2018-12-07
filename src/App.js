@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
-import { toggleCollapsed } from './redux/actions';
+import { toggleCollapsed } from './redux/actions/global';
 import './App.css';
 
 const { Header, Sider, Content } = Layout;
@@ -56,7 +56,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { global } = state;
   return { global };
 };

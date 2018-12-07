@@ -1,23 +1,19 @@
-import {
-  TOGGLE_COLLAPSED
-} from '../actionTypes';
+import { TOGGLE_COLLAPSED } from '../actionTypes/global';
 
 const initialState = {
-  collapsed: false
-}
+  collapsed: false,
+};
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_COLLAPSED:
-      const {
-        collapsed
-      } = action.payload;
+      const { collapsed } = action.payload;
       return {
         ...state,
         collapsed,
-      }
+      };
 
     default:
-      return state
+      return state;
   }
 }
