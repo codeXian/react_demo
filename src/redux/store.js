@@ -1,7 +1,17 @@
-import { createStore } from 'redux';
+import {
+  createStore,
+  applyMiddleware
+} from 'redux';
+import {
+  composeWithDevTools
+} from 'redux-devtools-extension';
 import rootReducer from './reducers';
 
+const middleware = []
+
 export default createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  rootReducer, /* preloadedState */
+  composeWithDevTools(
+    applyMiddleware(...middleware)
+  )
 );

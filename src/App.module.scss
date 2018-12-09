@@ -1,0 +1,26 @@
+.layout {
+  height: 100vh;
+
+  .logo {
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 12px;
+  }
+
+  .link {
+    display: inline-block;
+  }
+
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover {
+      color: #1890ff;
+    }
+  }
+}
