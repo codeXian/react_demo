@@ -1,30 +1,15 @@
 import { Layout, Menu, Icon } from 'antd';
-import React, { Component } from 'react';
-import Loadable from 'react-loadable';
+import classNames from 'classnames';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styles from './App.module.scss';
-import Loading from './components/Loading';
 import { toggleCollapsed } from './redux/actions/global';
-
-const HomeLoadable = Loadable({
-  loader: () => import(/* webpackChunkName: "home" */ './routes/Home'),
-  loading: Loading,
-});
-
-const AboutLoadable = Loadable({
-  loader: () => import(/* webpackChunkName: "about" */'./routes/About'),
-  loading: Loading,
-});
-
-const UsersLoadable = Loadable({
-  loader: () => import(/* webpackChunkName: "users" */'./routes/Users'),
-  loading: Loading,
-});
+import routers from './router';
 
 const { Header, Sider, Content } = Layout;
 
-class App extends Component {
+class App extends PureComponent {
   toggle = () => {
     this.props.toggleCollapsed(!this.props.global.collapsed);
   };
@@ -38,51 +23,39 @@ class App extends Component {
             <div className={styles.logo}>
               {!collapsed ? 'react_demo' : 'react'}
             </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1">
-                <Icon type="user" />
-                <Link to="/" className={styles.link}>
-                  <span>首页</span>
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <Link to="/about/" className={styles.link}>
-                  关于
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="upload" />
-                <Link to="/users/" className={styles.link}>
-                  用户
-                </Link>
-              </Menu.Item>
+            <Menu theme="dark" mode="inline">
+              {routers.map((router) => (
+                <Menu.Item key={router.path}>
+                  <Icon type={router.icon} />
+                  <Link
+                    to={router.path}
+                    className={classNames(styles.link, {
+                      [styles.collapsed]: collapsed,
+                    })}
+                  >
+                    {router.name}
+                  </Link>
+                </Menu.Item>
+              ))}
             </Menu>
           </Sider>
           <Layout>
-            <Header
-              style={{
-                background: '#fff',
-                padding: 0,
-              }}
-            >
+            <Header className={styles.header}>
               <Icon
                 className={styles.trigger}
                 type={collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
               />
             </Header>
-            <Content
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-                background: '#fff',
-                minHeight: 280,
-              }}
-            >
-              <Route path="/" exact component={HomeLoadable} />
-              <Route path="/about/" component={AboutLoadable} />
-              <Route path="/users/" component={UsersLoadable} />
+            <Content className={styles.content}>
+              {routers.map((router) => (
+                <Route
+                  key={router.path}
+                  path={router.path}
+                  exact={router.exact}
+                  component={router.component}
+                />
+              ))}
             </Content>
           </Layout>
         </Layout>
@@ -98,9 +71,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  toggleCollapsed,
-};
+const mapDispatchToProps = { toggleCollapsed };
 
 export default connect(
   mapStateToProps,

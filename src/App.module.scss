@@ -10,17 +10,33 @@
 
   .link {
     display: inline-block;
+
+    &.collapsed {
+      display: none;
+    }
   }
 
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color .3s;
+  .header {
+    background: #fff;
+    padding: 0;
 
-    &:hover {
-      color: #1890ff;
+    .trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color .3s;
+
+      &:hover {
+        color: #1890ff;
+      }
     }
+  }
+
+  .content {
+    margin: 24px 16px;
+    padding: 24px;
+    background: #fff;
+    min-height: 280px;
   }
 }
