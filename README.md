@@ -5,11 +5,13 @@
 ## technology stack
 
 - antd
-- react-router-dom
-- redux、react-redux、redux-devtools-extension
-- scss、scss module
-- react-loadable
+- axios
 - classnames
+- react-loadable
+- react-router-dom
+- redux、redux-devtools-extension、react-redux
+- scss、scss module
 
 ## react knowledge
+
 - context
