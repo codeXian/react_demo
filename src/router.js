@@ -14,13 +14,13 @@ const routers = [
   },
   {
     component: Loadable({
-      loader: () => import(/* webpackChunkName: "about" */ './routes/About'),
+      loader: () => import(/* webpackChunkName: "about" */ './routes/Context'),
       loading: Loading,
     }),
     exact: false,
     icon: 'book',
-    name: '关于',
-    path: '/about/',
+    name: 'react_context',
+    path: '/context/',
   },
   {
     component: Loadable({
