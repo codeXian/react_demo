@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import React, { Component } from 'react';
-import axios, { cancel } from '../../axios';
+import axios, { cancel } from '@/axios';
 
 export default class ReduxSaga extends Component {
   handleClickSend = async () => {

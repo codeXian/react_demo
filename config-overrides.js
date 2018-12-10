@@ -1,3 +1,4 @@
+const path = require('path');
 const { injectBabelPlugin } = require('react-app-rewired');
 const rewireLess = require('react-app-rewire-less');
 const babelDynamicImport = require('@babel/plugin-syntax-dynamic-import');
@@ -15,5 +16,10 @@ module.exports = function override(config, env) {
     modifyVars: { '@primary-color': '#1DA57A' },
     javascriptEnabled: true,
   })(config, env);
+  //add alias
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    '@': path.resolve('src'),
+  };
   return config;
 };
