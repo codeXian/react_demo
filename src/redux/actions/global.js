@@ -1,10 +1,9 @@
-import {
-  TOGGLE_COLLAPSED,
-  INCREMENT_COUNTER,
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER_ASYNC,
-  FETCHUSER_REQUESTED,
-} from '../actionTypes/global';
+import globalActionTypes from '../actionTypes/global';
+
+const {
+  reducers: { TOGGLE_COLLAPSED, INCREMENT_COUNTER, DECREMENT_COUNTER },
+  effects: { INCREMENT_COUNTER_ASYNC, FETCHUSER_REQUESTED_ASYNC },
+} = globalActionTypes;
 
 export default {
   namespace: 'global',
@@ -27,7 +26,7 @@ export default {
       return { type: INCREMENT_COUNTER_ASYNC };
     },
     fetchUserDataAsync() {
-      return { type: FETCHUSER_REQUESTED };
+      return { type: FETCHUSER_REQUESTED_ASYNC };
     },
   },
 };

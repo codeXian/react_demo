@@ -1,16 +1,28 @@
 import { delay } from 'redux-saga';
-import { call, takeEvery, put, all } from 'redux-saga/effects';
-import { fetchUserData } from '@/services/api';
 import {
-  INCREMENT_COUNTER_ASYNC,
-  INCREMENT_COUNTER,
-  FETCHUSER_SUCCESS,
-  FETCHUSER_ERROR,
-  FETCHUSER_REQUESTED,
-} from '../actionTypes/global';
+  call,
+  takeEvery,
+  put,
+  all,
+  takeLatest,
+  select,
+  take,
+} from 'redux-saga/effects';
+import { fetchUserData } from '@/services/api';
+import globalActionTypes from '../actionTypes/global';
 
-export function helloSaga() {
-  console.log('Hello Saga');
+const {
+  reducers: { INCREMENT_COUNTER, FETCHUSER_SUCCESS, FETCHUSER_ERROR },
+  effects: { INCREMENT_COUNTER_ASYNC, FETCHUSER_REQUESTED_ASYNC },
+} = globalActionTypes;
+
+export function* watchAndLog() {
+  while (true) {
+    const action = yield take('*');
+    const state = yield select();
+    console.log('action', action);
+    console.log('state after', state);
+  }
 }
 
 export function* incrementAsync() {
@@ -27,18 +39,17 @@ export function* fetchUserDataAsync() {
     const data = yield call(fetchUserData);
     yield put({ type: FETCHUSER_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error);
     yield put({ type: FETCHUSER_ERROR, error });
   }
 }
 
 export function* watchFetchUserDataAsync() {
-  yield takeEvery(FETCHUSER_REQUESTED, fetchUserDataAsync);
+  yield takeLatest(FETCHUSER_REQUESTED_ASYNC, fetchUserDataAsync);
 }
 
 export default function* rootSaga() {
   yield all([
-    call(helloSaga),
+    call(watchAndLog),
     call(watchIncrementAsync),
     call(watchFetchUserDataAsync),
   ]);

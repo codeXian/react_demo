@@ -1,10 +1,14 @@
-import {
-  TOGGLE_COLLAPSED,
-  INCREMENT_COUNTER,
-  DECREMENT_COUNTER,
-  FETCHUSER_SUCCESS,
-  FETCHUSER_ERROR,
-} from '../actionTypes/global';
+import globalActionTypes from '../actionTypes/global';
+
+const {
+  reducers: {
+    TOGGLE_COLLAPSED,
+    INCREMENT_COUNTER,
+    DECREMENT_COUNTER,
+    FETCHUSER_ERROR,
+    FETCHUSER_SUCCESS,
+  },
+} = globalActionTypes;
 
 const initialState = {
   collapsed: false,
