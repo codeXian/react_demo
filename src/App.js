@@ -4,8 +4,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styles from './App.module.scss';
-import { toggleCollapsed } from './redux/actions/global';
+import globalActions from '@/redux/actions/global';
 import routers from './router';
+
+const {
+  reducers: { toggleCollapsed },
+} = globalActions;
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,7 +28,7 @@ class App extends PureComponent {
               {!collapsed ? 'react_demo' : 'react'}
             </div>
             <Menu theme="dark" mode="inline">
-              {routers.map((router) => (
+              {routers.map(router => (
                 <Menu.Item key={router.path}>
                   <Icon type={router.icon} />
                   <Link
@@ -48,7 +52,7 @@ class App extends PureComponent {
               />
             </Header>
             <Content className={styles.content}>
-              {routers.map((router) => (
+              {routers.map(router => (
                 <Route
                   key={router.path}
                   path={router.path}
@@ -64,7 +68,7 @@ class App extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { global } = state;
   return {
     global,
