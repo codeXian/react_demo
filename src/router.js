@@ -24,13 +24,24 @@ const routers = [
   },
   {
     component: Loadable({
-      loader: () => import(/* webpackChunkName: "users" */ './routes/ReduxSaga'),
+      loader: () =>
+        import(/* webpackChunkName: "users" */ './routes/ReduxSaga'),
       loading: Loading,
     }),
     exact: false,
     icon: 'user',
     name: 'redux_saga',
     path: '/redux-saga/',
+  },
+  {
+    component: Loadable({
+      loader: () => import(/* webpackChunkName: "login" */ './routes/Login'),
+      loading: Loading,
+    }),
+    exact: false,
+    icon: 'contacts',
+    name: '登陆',
+    path: '/login/',
   },
 ];
 

@@ -47,9 +47,9 @@ export function* watchFetchUserDataAsync() {
   yield takeLatest(FETCHUSER_REQUESTED_ASYNC, fetchUserDataAsync);
 }
 
-export default function* rootSaga() {
+export default function* globalSagas() {
   yield all([
-    call(watchAndLog),
+    // call(watchAndLog),
     call(watchIncrementAsync),
     call(watchFetchUserDataAsync),
   ]);

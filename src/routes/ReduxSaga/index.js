@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios, { cancel } from '@/axios';
 import globalActions from '@/redux/actions/global';
+import styles from './index.module.scss';
 
 const {
   reducers: { incrementCounter, decrementCounter },
@@ -25,24 +26,24 @@ class ReduxSaga extends Component {
     return (
       <div>
         <div>{this.props.counter}</div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.handleClickSend}>发送请求</Button>
         </div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.handleClickStop}>停止请求</Button>
         </div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.props.incrementCounter}>couter增加</Button>
         </div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.props.decrementCounter}>couter减少</Button>
         </div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.props.incrementCounterAsync}>
             click couter 1s 之后 增加
           </Button>
         </div>
-        <div>
+        <div className={styles.item}>
           <Button onClick={this.props.fetchUserDataAsync}>
             异步请求用户数据
           </Button>
