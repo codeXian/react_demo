@@ -7,7 +7,11 @@ import styles from './index.module.scss';
 
 const {
   reducers: { incrementCounter, decrementCounter },
-  effects: { incrementCounterAsync, fetchUserDataAsync },
+  effects: {
+    incrementCounterAsync,
+    fetchUserDataAsync,
+    fetchUserDataTimeoutAsync,
+  },
 } = globalActions;
 
 class ReduxSaga extends Component {
@@ -48,6 +52,11 @@ class ReduxSaga extends Component {
             异步请求用户数据
           </Button>
         </div>
+        <div className={styles.item}>
+          <Button onClick={this.props.fetchUserDataTimeoutAsync}>
+            异步超时1s请求用户数据
+          </Button>
+        </div>
       </div>
     );
   }
@@ -65,6 +74,7 @@ const mapDispatchToProps = {
   decrementCounter,
   incrementCounterAsync,
   fetchUserDataAsync,
+  fetchUserDataTimeoutAsync,
 };
 
 export default connect(

@@ -2,7 +2,11 @@ import globalActionTypes from '../actionTypes/global';
 
 const {
   reducers: { TOGGLE_COLLAPSED, INCREMENT_COUNTER, DECREMENT_COUNTER },
-  effects: { INCREMENT_COUNTER_ASYNC, FETCHUSER_REQUESTED_ASYNC },
+  effects: {
+    INCREMENT_COUNTER_ASYNC,
+    FETCHUSER_REQUESTED_ASYNC,
+    POSTS_RECEIVED_ASYNC,
+  },
 } = globalActionTypes;
 
 export default {
@@ -27,6 +31,9 @@ export default {
     },
     fetchUserDataAsync() {
       return { type: FETCHUSER_REQUESTED_ASYNC };
+    },
+    fetchUserDataTimeoutAsync() {
+      return { type: POSTS_RECEIVED_ASYNC };
     },
   },
 };

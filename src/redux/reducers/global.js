@@ -7,6 +7,8 @@ const {
     DECREMENT_COUNTER,
     FETCHUSER_ERROR,
     FETCHUSER_SUCCESS,
+    TIMEOUT_ERROR,
+    POSTS_RECEIVED,
   },
 } = globalActionTypes;
 
@@ -14,6 +16,7 @@ const initialState = {
   collapsed: false,
   counter: 0,
   user: null,
+  posts: null,
 };
 
 export default function(state = initialState, action) {
@@ -45,6 +48,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         user: null,
+      };
+    }
+    case TIMEOUT_ERROR: {
+      return {
+        ...state,
+        posts: 'time out',
+      };
+    }
+    case POSTS_RECEIVED: {
+      const {
+        data: { data },
+      } = action.payload;
+      return {
+        ...state,
+        posts: data,
       };
     }
     default:
