@@ -25,7 +25,7 @@ function* authorize(params) {
     yield put({ type: LOGIN_ERROR, error });
   } finally {
     if (yield cancelled()) {
-      console.log('我这个请求接口被提前终止了');
+      console.log('我请求登录接口被提前终止了');
     }
   }
 }

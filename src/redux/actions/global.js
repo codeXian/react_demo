@@ -6,6 +6,9 @@ const {
     INCREMENT_COUNTER_ASYNC,
     FETCHUSER_REQUESTED_ASYNC,
     POSTS_RECEIVED_ASYNC,
+    FETCH_PRODUCTS_ASYNC,
+    QUENE_ASYNC,
+    INPUT_THROTTLE,
   },
 } = globalActionTypes;
 
@@ -23,7 +26,7 @@ export default {
     },
     decrementCounter() {
       return { type: DECREMENT_COUNTER };
-    },
+    }
   },
   effects: {
     incrementCounterAsync() {
@@ -35,5 +38,14 @@ export default {
     fetchUserDataTimeoutAsync() {
       return { type: POSTS_RECEIVED_ASYNC };
     },
+    fetchProductsAsync() {
+      return { type: FETCH_PRODUCTS_ASYNC };
+    },
+    queneAsync(value) {
+      return { type: QUENE_ASYNC, payload: { value } };
+    },
+    handleChangeInputThrottle(value) {
+      return { type: INPUT_THROTTLE, payload: { value } }
+    }
   },
 };

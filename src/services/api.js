@@ -7,3 +7,7 @@ export async function fetchUserData() {
 export async function fetchLoginData(params) {
   return axios.post('/api/login', params);
 }
+
+export async function fetchProducts() {
+  return axios.get('/api/products')
+}

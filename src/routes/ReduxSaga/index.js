@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios, { cancel } from '@/axios';
@@ -11,6 +11,9 @@ const {
     incrementCounterAsync,
     fetchUserDataAsync,
     fetchUserDataTimeoutAsync,
+    fetchProductsAsync,
+    queneAsync,
+    handleChangeInputThrottle,
   },
 } = globalActions;
 
@@ -29,18 +32,18 @@ class ReduxSaga extends Component {
   render() {
     return (
       <div>
-        <div>{this.props.counter}</div>
-        <div className={styles.item}>
-          <Button onClick={this.handleClickSend}>发送请求</Button>
-        </div>
-        <div className={styles.item}>
-          <Button onClick={this.handleClickStop}>停止请求</Button>
-        </div>
+        <div>我是counter: {this.props.counter}</div>
         <div className={styles.item}>
           <Button onClick={this.props.incrementCounter}>couter增加</Button>
         </div>
         <div className={styles.item}>
           <Button onClick={this.props.decrementCounter}>couter减少</Button>
+        </div>
+        <div className={styles.item}>
+          <Button onClick={this.handleClickSend}>发送请求</Button>
+        </div>
+        <div className={styles.item}>
+          <Button onClick={this.handleClickStop}>停止请求</Button>
         </div>
         <div className={styles.item}>
           <Button onClick={this.props.incrementCounterAsync}>
@@ -56,6 +59,24 @@ class ReduxSaga extends Component {
           <Button onClick={this.props.fetchUserDataTimeoutAsync}>
             异步超时1s请求用户数据
           </Button>
+        </div>
+        <div className={styles.item} onClick={this.props.fetchProductsAsync}>
+          <Button>请求商品列表接口</Button>
+        </div>
+        <div
+          className={styles.item}
+          onClick={() => this.props.queneAsync(Math.ceil(Math.random() * 100))}
+        >
+          <Button>队列调用</Button>
+        </div>
+        <div className={styles.item}>
+          节流实现
+          <Input
+            onChange={e => {
+              e.persist();
+              this.props.handleChangeInputThrottle(e.target.value);
+            }}
+          />
         </div>
       </div>
     );
@@ -75,6 +96,9 @@ const mapDispatchToProps = {
   incrementCounterAsync,
   fetchUserDataAsync,
   fetchUserDataTimeoutAsync,
+  fetchProductsAsync,
+  queneAsync,
+  handleChangeInputThrottle,
 };
 
 export default connect(
