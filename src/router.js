@@ -30,7 +30,7 @@ const routers = [
     }),
     exact: false,
     icon: 'user',
-    name: 'redux_saga',
+    name: 'redux_sagia',
     path: '/redux-saga/',
   },
   {
@@ -42,6 +42,16 @@ const routers = [
     icon: 'contacts',
     name: '登陆',
     path: '/login/',
+  },
+  {
+    component: Loadable({
+      loader: () => import(/* webbapckChunkName "memo" */ './routes/Memo'),
+      loading: Loading,
+    }),
+    exact: false,
+    icon: 'read',
+    name: 'memo',
+    path: '/path/',
   },
 ];
 
