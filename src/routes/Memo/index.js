@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import React from 'react';
+import { isEqual } from 'lodash';
 
 // function Render(props) {
 //   console.log('redner1');
@@ -12,8 +13,15 @@ import React from 'react';
 //   );
 // }
 
+function areEqual(prevProps, nextProps) {
+  if (isEqual(prevProps, nextProps)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const Render = React.memo(function Render(props) {
-  console.log('redner2');
   return (
     <div>
       <p>name: {props.name}</p>
@@ -27,7 +35,7 @@ const Render = React.memo(function Render(props) {
       </div>
     </div>
   );
-});
+}, areEqual);
 
 export default class MemoComponent extends React.PureComponent {
   state = {
