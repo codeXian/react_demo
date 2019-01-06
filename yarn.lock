@@ -845,7 +845,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.2.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
   version "7.2.0"
   resolved "http://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
   integrity sha1-sD5C7t31iY4AZG5MhA+ge6jcrX8=
@@ -2917,6 +2917,14 @@ create-react-context@0.2.2:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
+create-react-context@^0.2.2:
+  version "0.2.3"
+  resolved "http://registry.npm.taobao.org/create-react-context/download/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
+  integrity sha1-nsFAppFKIu8EuLCbd3HeiVZ8tvM=
+  dependencies:
+    fbjs "^0.8.0"
+    gud "^1.0.0"
+
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "http://registry.npm.taobao.org/cross-spawn/download/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4975,16 +4983,17 @@ hex-color-regex@^1.1.0:
   resolved "http://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-history@^4.7.2:
-  version "4.7.2"
-  resolved "http://registry.npm.taobao.org/history/download/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
-  integrity sha1-IrXH8xYzxbgCHH9KipVKwTnujVs=
+history@^4.8.0-beta.0:
+  version "4.8.0-beta.0"
+  resolved "http://registry.npm.taobao.org/history/download/history-4.8.0-beta.0.tgz#8b48c1354ac290341c0d73dd33c763bd140531f4"
+  integrity sha1-i0jBNUrCkDQcDXPdM8djvRQFMfQ=
   dependencies:
-    invariant "^2.2.1"
+    "@babel/runtime" "^7.1.2"
     loose-envify "^1.2.0"
     resolve-pathname "^2.2.0"
+    tiny-invariant "^1.0.2"
+    tiny-warning "^1.0.0"
     value-equal "^0.4.0"
-    warning "^3.0.0"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5444,7 +5453,7 @@ intersperse@^1.0.0:
   resolved "http://registry.npm.taobao.org/intersperse/download/intersperse-1.0.0.tgz#f2561fb1cfef9f5277cc3347a22886b4351a5181"
   integrity sha1-8lYfsc/vn1J3zDNHoiiGtDUaUYE=
 
-invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/invariant/download/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -9112,7 +9121,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@15.x, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@15.x, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.6.2"
   resolved "http://registry.npm.taobao.org/prop-types/download/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha1-BdXKd7RFPphdYPx/+MhZCUpJcQI=
@@ -9792,6 +9801,11 @@ react-is@^16.3.2, react-is@^16.6.3:
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha1-0tdGL8/L5uwNpWrWkEfkflbn6sA=
 
+react-is@^16.5.2:
+  version "16.7.0"
+  resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
+  integrity sha1-wb0hxk8fE2TG9waV7ALWk5L0G/o=
+
 react-lazy-load@^3.0.13:
   version "3.0.13"
   resolved "http://registry.npm.taobao.org/react-lazy-load/download/react-lazy-load-3.0.13.tgz#3b0a92d336d43d3f0d73cbe6f35b17050b08b824"
@@ -9807,13 +9821,6 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "http://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
-react-loadable@^5.5.0:
-  version "5.5.0"
-  resolved "http://registry.npm.taobao.org/react-loadable/download/react-loadable-5.5.0.tgz#582251679d3da86c32aae2c8e689c59f1196d8c4"
-  integrity sha1-WCJRZ509qGwyquLI5onFnxGW2MQ=
-  dependencies:
-    prop-types "^15.5.0"
-
 react-redux@^6.0.0:
   version "6.0.0"
   resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-6.0.0.tgz#09e86eeed5febb98e9442458ad2970c8f1a173ef"
@@ -9826,30 +9833,34 @@ react-redux@^6.0.0:
     prop-types "^15.6.2"
     react-is "^16.6.3"
 
-react-router-dom@^4.3.1:
-  version "4.3.1"
-  resolved "http://registry.npm.taobao.org/react-router-dom/download/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
-  integrity sha1-TCYZ/CTE+ofJ/Rj0+0pD/mP71cY=
+react-router-dom@^4.4.0-beta.6:
+  version "4.4.0-beta.6"
+  resolved "http://registry.npm.taobao.org/react-router-dom/download/react-router-dom-4.4.0-beta.6.tgz#0bec50c8a4276a555b5f1159bb94e7b6fbb73699"
+  integrity sha1-C+xQyKQnalVbXxFZu5Tntvu3Npk=
   dependencies:
-    history "^4.7.2"
-    invariant "^2.2.4"
+    "@babel/runtime" "^7.1.2"
+    history "^4.8.0-beta.0"
     loose-envify "^1.3.1"
-    prop-types "^15.6.1"
-    react-router "^4.3.1"
-    warning "^4.0.1"
+    prop-types "^15.6.2"
+    react-router "^4.4.0-beta.6"
+    tiny-invariant "^1.0.2"
+    tiny-warning "^1.0.0"
 
-react-router@^4.3.1:
-  version "4.3.1"
-  resolved "http://registry.npm.taobao.org/react-router/download/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
-  integrity sha1-qtpK7xTICcsuaGsFzuR0IjRQbE4=
+react-router@^4.4.0-beta.6:
+  version "4.4.0-beta.6"
+  resolved "http://registry.npm.taobao.org/react-router/download/react-router-4.4.0-beta.6.tgz#37e1d9ce2be93df397cc1feb1dcd6460ea0b236b"
+  integrity sha1-N+HZzivpPfOXzB/rHc1kYOoLI2s=
   dependencies:
-    history "^4.7.2"
+    "@babel/runtime" "^7.1.2"
+    create-react-context "^0.2.2"
+    history "^4.8.0-beta.0"
     hoist-non-react-statics "^2.5.0"
-    invariant "^2.2.4"
     loose-envify "^1.3.1"
     path-to-regexp "^1.7.0"
-    prop-types "^15.6.1"
-    warning "^4.0.1"
+    prop-types "^15.6.2"
+    react-is "^16.5.2"
+    tiny-invariant "^1.0.2"
+    tiny-warning "^1.0.0"
 
 react-scripts@2.1.1:
   version "2.1.1"
@@ -11432,10 +11443,20 @@ timsort@^0.3.0:
   resolved "http://registry.npm.taobao.org/timsort/download/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
+tiny-invariant@^1.0.2:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/tiny-invariant/download/tiny-invariant-1.0.3.tgz#91efaaa0269ccb6271f0296aeedb05fc3e067b7a"
+  integrity sha1-ke+qoCacy2Jx8Clq7tsF/D4Ge3o=
+
 tiny-relative-date@^1.3.0:
   version "1.3.0"
   resolved "http://registry.npm.taobao.org/tiny-relative-date/download/tiny-relative-date-1.3.0.tgz#fa08aad501ed730f31cc043181d995c39a935e07"
   integrity sha1-+giq1QHtcw8xzAQxgdmVw5qTXgc=
+
+tiny-warning@^1.0.0:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/tiny-warning/download/tiny-warning-1.0.2.tgz#1dfae771ee1a04396bdfde27a3adcebc6b648b28"
+  integrity sha1-Hfrnce4aBDlr394no63OvGtkiyg=
 
 tinycolor2@^1.4.1:
   version "1.4.1"

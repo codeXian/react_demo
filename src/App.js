@@ -1,8 +1,9 @@
 import { Layout, Menu, Icon } from 'antd';
 import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import Loading from '@/components/Loading';
 import styles from './App.module.scss';
 import globalActions from '@/redux/actions/global';
 import routers from './router';
@@ -52,14 +53,18 @@ class App extends PureComponent {
               />
             </Header>
             <Content className={styles.content}>
-              {routers.map(router => (
-                <Route
-                  key={router.path}
-                  path={router.path}
-                  exact={router.exact}
-                  component={router.component}
-                />
-              ))}
+              <Suspense fallback={<Loading />}>
+                <Switch>
+                  {routers.map(router => (
+                    <Route
+                      key={router.path}
+                      path={router.path}
+                      exact={router.exact}
+                      component={router.component}
+                    />
+                  ))}
+                </Switch>
+              </Suspense>
             </Content>
           </Layout>
         </Layout>

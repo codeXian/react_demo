@@ -1,57 +1,68 @@
-import Loadable from 'react-loadable';
-import Loading from './components/Loading';
+import { lazy } from 'react';
 
 const routers = [
   {
-    component: Loadable({
-      loader: () => import(/* webpackChunkName: "home" */ './routes/Home'),
-      loading: Loading,
-    }),
+    component: lazy(() =>
+      import(/* webpackChunkName: "home" */ './routes/Home'),
+    ),
     exact: true,
     icon: 'home',
     name: '首页',
     path: '/',
   },
   {
-    component: Loadable({
-      loader: () => import(/* webpackChunkName: "about" */ './routes/Context'),
-      loading: Loading,
-    }),
+    component: lazy(() =>
+      import(/* webpackChunkName: "about" */ './routes/Context'),
+    ),
     exact: false,
     icon: 'book',
     name: 'react_context',
     path: '/context/',
   },
   {
-    component: Loadable({
-      loader: () =>
-        import(/* webpackChunkName: "users" */ './routes/ReduxSaga'),
-      loading: Loading,
-    }),
+    component: lazy(() =>
+      import(/* webpackChunkName: "users" */ './routes/ReduxSaga'),
+    ),
     exact: false,
     icon: 'user',
     name: 'redux_sagia',
     path: '/redux-saga/',
   },
   {
-    component: Loadable({
-      loader: () => import(/* webpackChunkName: "login" */ './routes/Login'),
-      loading: Loading,
-    }),
+    component: lazy(() =>
+      import(/* webpackChunkName: "login" */ './routes/Login'),
+    ),
     exact: false,
     icon: 'contacts',
     name: '登陆',
     path: '/login/',
   },
   {
-    component: Loadable({
-      loader: () => import(/* webbapckChunkName "memo" */ './routes/Memo'),
-      loading: Loading,
-    }),
+    component: lazy(() =>
+      import(/* webbapckChunkName "memo" */ './routes/Memo'),
+    ),
     exact: false,
     icon: 'read',
     name: 'memo',
     path: '/path/',
+  },
+  {
+    component: lazy(() =>
+      import(/* webpackChunkName "lazy" */ './routes/Lazy'),
+    ),
+    exact: false,
+    icon: 'arrow-down',
+    name: 'lazy',
+    path: '/lazy/',
+  },
+  {
+    component: lazy(() =>
+      import(/* webpackChunkName "react-component" */ './routes/ReactComponent'),
+    ),
+    exact: false,
+    icon: 'arrow-up',
+    name: 'react-component',
+    path: '/eact-component/',
   },
 ];
 
